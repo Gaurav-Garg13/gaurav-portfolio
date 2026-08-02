@@ -2,7 +2,7 @@
 
 A modern, responsive personal portfolio built with React, Vite, and Tailwind CSS.
 
-**🚀 Live Demo:** [https://your-live-portfolio-link.com](https://your-live-portfolio-link.com) *(Update this link!)*
+**🚀 Live Demo:** [https://your-live-portfolio-link.com](https://gaurav-portfolio-eta-six.vercel.app/) *(Update this link!)*
 
 ## 📸 Preview
 
