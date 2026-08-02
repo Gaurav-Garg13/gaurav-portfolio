@@ -115,7 +115,7 @@ export default function Hero() {
                 }}
               >
                 <img
-                  src="./pic.png"
+                  src="/pic.png"
                   alt="Gaurav Garg - Software Engineer"
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", filter: "contrast(1.02) saturate(0.95)", display: "block" }}
                 />
