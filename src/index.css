@@ -1,0 +1,302 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+:root, html.dark, body.dark {
+  /* Dark Theme */
+  --bg:           #141210;
+  --bg-primary:   #1C1A18;
+  --bg-secondary: #23211F;
+  --header-bg:    #141210;
+  --text-1:       #F5F3EE;
+  --text-2:       #A7A29A;
+  --text-3:       #6E6960;
+  --accent:       #B38A5A; /* Bronze */
+  --accent-2:     #516154; /* Forest Green */
+  --accent-glow:  rgba(179, 138, 90, 0.22);
+  --success:      #6D8A68; /* Emerald */
+  --border:       rgba(255, 255, 255, 0.08);
+  --border-strong:rgba(255, 255, 255, 0.16);
+  --grid-line-1:  rgba(255, 255, 255, 0.05);
+  --grid-line-2:  rgba(255, 255, 255, 0.02);
+
+  --font-display: "Satoshi", "Inter Variable", system-ui, sans-serif;
+  --font-sans:    "Inter Variable", "Inter", system-ui, sans-serif;
+  --font-mono:    "Fira Code", ui-monospace, monospace;
+  --font-hand:    "Caveat", cursive;
+
+  --ease-silk:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+html.light, body.light {
+  /* Light Theme */
+  --bg:           #F7F5F0;
+  --bg-primary:   #FFFFFF;
+  --bg-secondary: #EAE6DF;
+  --header-bg:    #F7F5F0;
+  --text-1:       #1C1917;
+  --text-2:       #4A453E;
+  --text-3:       #78716C;
+  --accent:       #9E6F38; /* Warm Amber/Bronze */
+  --accent-2:     #415445;
+  --accent-glow:  rgba(158, 111, 56, 0.2);
+  --success:      #3E693B;
+  --border:       rgba(28, 25, 23, 0.10);
+  --border-strong:rgba(28, 25, 23, 0.22);
+  --grid-line-1:  rgba(28, 25, 23, 0.06);
+  --grid-line-2:  rgba(28, 25, 23, 0.03);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg);
+  cursor: none !important;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text-1);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a, button, input, textarea, select, [data-cursor-type] {
+  cursor: none !important;
+}
+
+::selection { background-color: var(--accent); color: #141210; }
+a { color: inherit; text-decoration: none; }
+img, video { max-width: 100%; display: block; }
+button { background: none; border: none; font: inherit; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   BACKGROUND: Subtle Grid with Paper Grain
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.bg-blueprint {
+  position: relative;
+  background-color: var(--bg);
+}
+.bg-blueprint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line-1) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-1) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-line-2) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-2) 1px, transparent 1px);
+}
+.bg-blueprint::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LAYOUT: Strict Two-Column Mockup Style
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.wrap {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-inline: clamp(1.5rem, 4vw, 4rem);
+  position: relative;
+  z-index: 1;
+}
+
+.section-pad {
+  padding-block: clamp(6rem, 12vh, 10rem);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .section-grid {
+    grid-template-columns: 80px 1.2fr 2.5fr; /* Number | Sticky Intro | Content */
+    gap: 2rem;
+  }
+}
+
+.section-num {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.8125rem;
+  position: relative;
+}
+/* Vertical line under number */
+.section-num::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 6px;
+  width: 1px;
+  height: calc(100% + 150px);
+  background: var(--border-strong);
+  display: none;
+}
+@media (min-width: 1024px) {
+  .section-num::after { display: block; }
+}
+
+.sticky-col {
+  position: sticky;
+  top: 120px;
+  height: max-content;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TYPOGRAPHY
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.t-giant {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text-1);
+  font-size: clamp(3rem, 7vw, 6rem);
+  text-transform: uppercase;
+}
+
+.t-headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-1);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+}
+
+.t-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-2);
+  font-size: clamp(0.9375rem, 1.2vw, 1rem);
+}
+
+.t-label {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   UI ELEMENTS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--text-1);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-primary:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-2);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  transition: color 0.2s;
+}
+.btn-secondary:hover { color: var(--text-1); }
+
+.premium-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: border-color 0.3s;
+}
+.premium-card:hover {
+  border-color: var(--border-strong);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 2px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   COMMAND PALETTE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+[cmdk-root] {
+  width: 100%;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.03);
+}
+[cmdk-input] {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  color: var(--text-1);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  outline: none;
+}
+[cmdk-input]::placeholder { color: var(--text-3); }
+[cmdk-list] { padding: 0.75rem; max-height: 380px; overflow-y: auto; }
+[cmdk-group-heading] {
+  padding: 0.75rem 1rem 0.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+[cmdk-item] {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  font-family: var(--font-sans);
+  color: var(--text-2);
+  border-radius: 2px;
+}
+[cmdk-item][data-selected="true"] { 
+  background: var(--bg-secondary);
+  color: var(--text-1);
+}
