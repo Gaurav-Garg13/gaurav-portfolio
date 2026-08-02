@@ -27,13 +27,14 @@ export default function Hero() {
           <div style={{ paddingRight: "2rem" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
               <Sparkles size={14} style={{ color: "var(--accent)" }} />
-              <p className="t-label" style={{ color: "var(--accent)", margin: 0 }}>SOFTWARE ENGINEER</p>
+              <p className="t-label" style={{ color: "var(--accent)", margin: 0 }}>✦ CYBERSECURITY STUDENT & DEVELOPER</p>
             </div>
             <h1 className="t-giant" style={{ marginBottom: "1.5rem" }}>
               GAURAV<br />GARG
             </h1>
             <p className="t-body-large" style={{ marginBottom: "2.5rem", maxWidth: "420px" }}>
-              Building secure software with curiosity, precision, and craftsmanship.
+              Building secure systems with code, curiosity,
+              and continuous learning.
             </p>
 
             <div style={{ display: "flex", alignItems: "center", gap: "1.5rem", marginBottom: "4rem" }}>
