@@ -1,10 +1,10 @@
 export const PERSONAL = {
   name: "Gaurav Garg",
   initials: "GG",
-  email: "gauravgarg1304@gmail.com",
+  email: "[EMAIL_ADDRESS]",
   github: "https://github.com/Gaurav-Garg13",
   linkedin: "https://www.linkedin.com/in/gaurav-garg-764a23323/",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "https://flowcv.com/resume/gmghhgfcv6mw",
 };
 
 export const STATUS = {
